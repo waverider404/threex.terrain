@@ -43,22 +43,25 @@ THREEx.Terrain.simplexHeightMap	= function(heightMap){
 			height	+= (simplex.noise(x/level, z/level)/2 + 0.5) * 0.5
 			level	*= 2
 			height	+= (simplex.noise(x/level, z/level)/2 + 0.5) * 1
-			height	/= 1+0.5+0.25+0.125
-			// put the height in the heightMap
-			heightMap[x][z]	= height
+			height	/= 1+0.5+0.25+0.125	
 			this.height = height
 			this.heights.push(this.height)
 		}
 	}
 }
+THREEx.Terrain.simplexHeightMap.prototype.viewNoise = function(){
+	this.heights.forEach(function(h){
+        		console.log(h)
+			
+  })
+}
 
 THREEx.Terrain.simplexHeightMap.prototype.remap = function(heightMap){
-var width	= heightMap.length
-	var depth	= heightMap[0].length
+	var width = heightMap.length
+	var depth = heightMap[0].length
 	for(var x = 0; x < width; x++){
 		for(var z = 0; z < depth; z++){
 		this.heights.forEach(function(h){
-			console.log("These are the generated heights "+h)
         		heightMap[x][z]	= h
 			
     			})
