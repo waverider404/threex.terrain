@@ -61,10 +61,10 @@ THREEx.Terrain.simplexHeightMap.prototype.remap = function(heightMap){
 	var depth = heightMap[0].length
 	for(var x = 0; x < width; x++){
 		for(var z = 0; z < depth; z++){
-		this.heights.forEach(function(h){
-        		heightMap[x][z]	= h
+		
+        		heightMap[x][z]	= this.heights
 			
-    			})
+    		
 		}
 	}
 }
