@@ -362,7 +362,6 @@ THREEx.Terrain.PlaneGeometry = function ( width, height, widthSegments, heightSe
 
 	}
 
-	this.computeCentroids();
 
 };
 
