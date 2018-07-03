@@ -29,7 +29,7 @@ THREEx.Terrain.simplexHeightMap	= function(heightMap){
 	// get heightMap dimensions
 	var width	= heightMap.length
 	var depth	= heightMap[0].length
-
+	
 	var simplex	= new SimplexNoise()
 	for(var x = 0; x < width; x++){
 		for(var z = 0; z < depth; z++){
@@ -46,8 +46,13 @@ THREEx.Terrain.simplexHeightMap	= function(heightMap){
 			height	/= 1+0.5+0.25+0.125
 			// put the height in the heightMap
 			heightMap[x][z]	= height
+			this.height = height
 		}
 	}
+}
+
+THREEx.Terrain.simplexHeightMap.prototype.viewNoise = function(){
+return this.height;	
 }
 
 /**
