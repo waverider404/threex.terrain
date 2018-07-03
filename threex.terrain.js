@@ -29,7 +29,7 @@ THREEx.Terrain.simplexHeightMap	= function(heightMap){
 	// get heightMap dimensions
 	var width	= heightMap.length
 	var depth	= heightMap[0].length
-	
+	this.heights = [];
 	var simplex	= new SimplexNoise()
 	for(var x = 0; x < width; x++){
 		for(var z = 0; z < depth; z++){
@@ -47,12 +47,23 @@ THREEx.Terrain.simplexHeightMap	= function(heightMap){
 			// put the height in the heightMap
 			heightMap[x][z]	= height
 			this.height = height
+			this.heights.push(this.height)
 		}
 	}
 }
 
-THREEx.Terrain.simplexHeightMap.prototype.viewNoise = function(){
-return this.height;	
+THREEx.Terrain.simplexHeightMap.prototype.remap = function(heightMap){
+var width	= heightMap.length
+	var depth	= heightMap[0].length
+	for(var x = 0; x < width; x++){
+		for(var z = 0; z < depth; z++){
+		this.heights.forEach(function(h){
+			console.log("These are the generated heights "+h)
+        		heightMap[x][z]	= h
+			
+    			})
+		}
+	}
 }
 
 /**
